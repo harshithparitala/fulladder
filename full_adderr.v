@@ -3,15 +3,13 @@ module full_adder (
     input wire b,
     input wire cin,
     input wire clk,
-    input wire vdd,
-    input wire gnd,
     output wire sum,
     output wire cout
 );
 
-    // drive internal signals from power/ground to ensure connectivity
-    wire pwr = vdd;
-    wire gnd_ref = gnd;
+    // Internal power/ground nets
+    supply1 vdd;
+    supply0 gnd;
 
     assign sum  = a ^ b ^ cin;
     assign cout = (a & b) | (b & cin) | (cin & a);
