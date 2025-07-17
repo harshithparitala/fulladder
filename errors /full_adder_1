@@ -1,0 +1,190 @@
+harshith@harshith-VirtualBox:~/OpenLane/designs/full_adder/verify$ cd ../../../
+harshith@harshith-VirtualBox:~/OpenLane$ make mount
+cd /home/harshith/OpenLane && \
+	docker run --rm -v /home/harshith:/home/harshith -v /home/harshith/OpenLane:/openlane -v /home/harshith/OpenLane/empty:/openlane/install -v /home/harshith/.volare:/home/harshith/.volare -e PDK_ROOT=/home/harshith/.volare -e PDK=sky130A  --user 1000:1000 -e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix -v /home/harshith/.Xauthority:/.Xauthority --network host --security-opt seccomp=unconfined -ti efabless/openlane:e73fb3c57e687a0023fcd4dcfd1566ecd478362a-amd64
+OpenLane Container (1.1.1):/openlane% ./flow.tcl -interactive
+OpenLane v1.1.1 (e73fb3c57e687a0023fcd4dcfd1566ecd478362a)
+All rights reserved. (c) 2020-2024 Efabless Corporation and contributors.
+Available under the Apache License, version 2.0. See the LICENSE file for more details.
+
+% prep -design full_adder
+invalid command name "prep"
+% package require openlane
+1.1.1
+% prep -design full_adder
+[INFO]: Using configuration in 'designs/full_adder/config.json'...
+[INFO]: Process Design Kit: sky130A
+[INFO]: PDK Root: /home/harshith/.volare
+[INFO]: Standard Cell Library: sky130_fd_sc_hd
+[INFO]: Optimization Standard Cell Library: sky130_fd_sc_hd
+[INFO]: Run Directory: /openlane/designs/full_adder/runs/RUN_2025.07.17_10.15.41
+[INFO]: Saving runtime environment...
+[INFO]: Preparing LEF files for the nom corner...
+[INFO]: Preparing LEF files for the min corner...
+[INFO]: Preparing LEF files for the max corner...
+% run_synthesis
+[STEP 1]
+[INFO]: Running Synthesis (log: designs/full_adder/runs/RUN_2025.07.17_10.15.41/logs/synthesis/1-synthesis.log)...
+[STEP 2]
+[INFO]: Running Single-Corner Static Timing Analysis (log: designs/full_adder/runs/RUN_2025.07.17_10.15.41/logs/synthesis/2-sta.log)...
+% run_floorplan
+[STEP 3]
+[INFO]: Running Initial Floorplanning (log: designs/full_adder/runs/RUN_2025.07.17_10.15.41/logs/floorplan/3-initial_fp.log)...
+[WARNING]: Current core area is too small for the power grid settings chosen. The power grid was scaled down to an offset of 1/8 the core width and height and a pitch of 1/4 the core width and height.
+[INFO]: Floorplanned with width 15.64 and height 13.6.
+[STEP 4]
+[INFO]: Running IO Placement (log: designs/full_adder/runs/RUN_2025.07.17_10.15.41/logs/floorplan/4-place_io.log)...
+[ERROR]: during executing: "openroad -exit -no_init -python /openlane/scripts/odbpy/io_place.py --config /openlane/designs/full_adder/pin_order.cfg --hor-layer met3 --ver-layer met2 --ver-width-mult 2 --hor-width-mult 2 --hor-extension 0 --ver-extension 0 --length 4 --unmatched-error --input-lef /openlane/designs/full_adder/runs/RUN_2025.07.17_10.15.41/tmp/merged.nom.lef --output-def /openlane/designs/full_adder/runs/RUN_2025.07.17_10.15.41/tmp/floorplan/4-io.def --output /openlane/designs/full_adder/runs/RUN_2025.07.17_10.15.41/tmp/floorplan/4-io.odb /openlane/designs/full_adder/runs/RUN_2025.07.17_10.15.41/tmp/floorplan/3-initial_fp.odb |& tee /dev/null /openlane/designs/full_adder/runs/RUN_2025.07.17_10.15.41/logs/floorplan/4-place_io.log"
+[ERROR]: Exit code: 1
+[ERROR]: Last 10 lines:
+OpenROAD b16bda7e82721d10566ff7e2b68f1ff0be9f9e38 
+Features included (+) or not (-): +Charts +GPU +GUI +Python
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+Top-level design name: full_adder
+[WARNING]: Some pins weren't matched by the config file
+Those are: ['Cout']
+Treating unmatched pins as errors. Exiting..
+child process exited abnormally
+
+
+% run_placement
+[STEP 5]
+[INFO]: Running Global Placement (log: designs/full_adder/runs/RUN_2025.07.17_10.15.41/logs/placement/4-global.log)...
+[ERROR]: during executing openroad script /openlane/scripts/openroad/gpl.tcl
+[ERROR]: Log: designs/full_adder/runs/RUN_2025.07.17_10.15.41/logs/placement/4-global.log
+[ERROR]: Last 10 lines:
+[INFO GPL-0029] BinSize: (  7.820  6.800 )
+[INFO GPL-0030] NumBins: 4
+[NesterovSolve] Iter:    1 overflow: 0.181 HPWL: 140673
+[INFO GPL-0100] worst slack 1e+30
+[WARNING GPL-0102] No slacks found. Timing-driven mode disabled.
+[NesterovSolve] Snapshot saved at iter = 0
+[INFO GPL-0075] Routability numCall: 1 inflationIterCnt: 1 bloatIterCnt: 0
+[ERROR GRT-0042] Pin A does not have geometries in a valid routing layer.
+Error: gpl.tcl, 75 GRT-0042
+child process exited abnormally
+
+[ERROR]: Creating issue reproducible...
+[INFO]: Saving runtime environment...
+OpenLane TCL Issue Packager
+
+EFABLESS CORPORATION AND ALL AUTHORS OF THE OPENLANE PROJECT SHALL NOT BE HELD
+LIABLE FOR ANY LEAKS THAT MAY OCCUR TO ANY PROPRIETARY DATA AS A RESULT OF USING
+THIS SCRIPT. THIS SCRIPT IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND.
+
+BY USING THIS SCRIPT, YOU ACKNOWLEDGE THAT YOU FULLY UNDERSTAND THIS DISCLAIMER
+AND ALL IT ENTAILS.
+
+Parsing config file(s)…
+Setting up /openlane/designs/full_adder/runs/RUN_2025.07.17_10.15.41/issue_reproducible…
+Done.
+[INFO]: Reproducible packaged: Please tarball and upload 'designs/full_adder/runs/RUN_2025.07.17_10.15.41/issue_reproducible' if you're going to submit an issue.
+
+% run_placement
+[STEP 6]
+[INFO]: Running Global Placement (log: designs/full_adder/runs/RUN_2025.07.17_10.15.41/logs/placement/5-global.log)...
+[ERROR]: during executing openroad script /openlane/scripts/openroad/gpl.tcl
+[ERROR]: Log: designs/full_adder/runs/RUN_2025.07.17_10.15.41/logs/placement/5-global.log
+[ERROR]: Last 10 lines:
+[INFO GPL-0029] BinSize: (  7.820  6.800 )
+[INFO GPL-0030] NumBins: 4
+[NesterovSolve] Iter:    1 overflow: 0.181 HPWL: 140673
+[INFO GPL-0100] worst slack 1e+30
+[WARNING GPL-0102] No slacks found. Timing-driven mode disabled.
+[NesterovSolve] Snapshot saved at iter = 0
+[INFO GPL-0075] Routability numCall: 1 inflationIterCnt: 1 bloatIterCnt: 0
+[ERROR GRT-0042] Pin A does not have geometries in a valid routing layer.
+Error: gpl.tcl, 75 GRT-0042
+child process exited abnormally
+
+[ERROR]: Creating issue reproducible...
+[INFO]: Saving runtime environment...
+OpenLane TCL Issue Packager
+
+EFABLESS CORPORATION AND ALL AUTHORS OF THE OPENLANE PROJECT SHALL NOT BE HELD
+LIABLE FOR ANY LEAKS THAT MAY OCCUR TO ANY PROPRIETARY DATA AS A RESULT OF USING
+THIS SCRIPT. THIS SCRIPT IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND.
+
+BY USING THIS SCRIPT, YOU ACKNOWLEDGE THAT YOU FULLY UNDERSTAND THIS DISCLAIMER
+AND ALL IT ENTAILS.
+
+Parsing config file(s)…
+Setting up /openlane/designs/full_adder/runs/RUN_2025.07.17_10.15.41/issue_reproducible…
+Done.
+[INFO]: Reproducible packaged: Please tarball and upload 'designs/full_adder/runs/RUN_2025.07.17_10.15.41/issue_reproducible' if you're going to submit an issue.
+
+% run_cts
+[STEP 7]
+[INFO]: Running Clock Tree Synthesis (log: designs/full_adder/runs/RUN_2025.07.17_10.15.41/logs/cts/7-cts.log)...
+[ERROR]: during executing openroad script /openlane/scripts/openroad/cts.tcl
+[ERROR]: Log: designs/full_adder/runs/RUN_2025.07.17_10.15.41/logs/cts/7-cts.log
+[ERROR]: Last 10 lines:
+Writing layout to '/openlane/designs/full_adder/runs/RUN_2025.07.17_10.15.41/results/cts/full_adder.def'…
+Writing timing constraints to '/openlane/designs/full_adder/runs/RUN_2025.07.17_10.15.41/results/cts/full_adder.sdc'…
+[WARNING DPL-0003] Placed check failed (4).
+ _2_
+ _3_
+ _4_
+ _5_
+[ERROR DPL-0033] detailed placement checks failed.
+DPL-0033
+child process exited abnormally
+
+[ERROR]: Creating issue reproducible...
+[INFO]: Saving runtime environment...
+OpenLane TCL Issue Packager
+
+EFABLESS CORPORATION AND ALL AUTHORS OF THE OPENLANE PROJECT SHALL NOT BE HELD
+LIABLE FOR ANY LEAKS THAT MAY OCCUR TO ANY PROPRIETARY DATA AS A RESULT OF USING
+THIS SCRIPT. THIS SCRIPT IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND.
+
+BY USING THIS SCRIPT, YOU ACKNOWLEDGE THAT YOU FULLY UNDERSTAND THIS DISCLAIMER
+AND ALL IT ENTAILS.
+
+Parsing config file(s)…
+Setting up /openlane/designs/full_adder/runs/RUN_2025.07.17_10.15.41/issue_reproducible…
+Done.
+[INFO]: Reproducible packaged: Please tarball and upload 'designs/full_adder/runs/RUN_2025.07.17_10.15.41/issue_reproducible' if you're going to submit an issue.
+
+% run_routing
+[STEP 8]
+[INFO]: Running Global Routing Resizer Design Optimizations (log: designs/full_adder/runs/RUN_2025.07.17_10.15.41/logs/routing/8-resizer_design.log)...
+[ERROR]: during executing openroad script /openlane/scripts/openroad/resizer_routing_design.tcl
+[ERROR]: Log: designs/full_adder/runs/RUN_2025.07.17_10.15.41/logs/routing/8-resizer_design.log
+[ERROR]: Last 10 lines:
+[INFO GRT-0088] Layer li1     Track-Pitch = 0.4600  line-2-Via Pitch: 0.3400
+[INFO GRT-0088] Layer met1    Track-Pitch = 0.3400  line-2-Via Pitch: 0.3400
+[INFO GRT-0088] Layer met2    Track-Pitch = 0.4600  line-2-Via Pitch: 0.3500
+[INFO GRT-0088] Layer met3    Track-Pitch = 0.6800  line-2-Via Pitch: 0.6150
+[INFO GRT-0088] Layer met4    Track-Pitch = 0.9200  line-2-Via Pitch: 1.0400
+[INFO GRT-0088] Layer met5    Track-Pitch = 3.4000  line-2-Via Pitch: 3.1100
+[INFO GRT-0019] Found 0 clock nets.
+[ERROR GRT-0010] Instance _5_ is not placed.
+Error: resizer_routing_design.tcl, 46 GRT-0010
+child process exited abnormally
+
+[ERROR]: Creating issue reproducible...
+[INFO]: Saving runtime environment...
+OpenLane TCL Issue Packager
+
+EFABLESS CORPORATION AND ALL AUTHORS OF THE OPENLANE PROJECT SHALL NOT BE HELD
+LIABLE FOR ANY LEAKS THAT MAY OCCUR TO ANY PROPRIETARY DATA AS A RESULT OF USING
+THIS SCRIPT. THIS SCRIPT IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND.
+
+BY USING THIS SCRIPT, YOU ACKNOWLEDGE THAT YOU FULLY UNDERSTAND THIS DISCLAIMER
+AND ALL IT ENTAILS.
+
+Parsing config file(s)…
+Setting up /openlane/designs/full_adder/runs/RUN_2025.07.17_10.15.41/issue_reproducible…
+Done.
+[INFO]: Reproducible packaged: Please tarball and upload 'designs/full_adder/runs/RUN_2025.07.17_10.15.41/issue_reproducible' if you're going to submit an issue.
+
+% run_klayout
+[STEP 9]
+[INFO]: Streaming out GDSII with KLayout (log: designs/full_adder/runs/RUN_2025.07.17_10.15.41/logs/signoff/9-gdsii-klayout.log)...
+% 
