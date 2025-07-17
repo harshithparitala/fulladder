@@ -1,6 +1,5 @@
-No problem, here's the content for your `README.md` file, formatted for a Git repository, with all conversational terms and citations removed.
 
-```markdown
+
 # 1-bit Full-Adder ASIC Design with OpenLane
 
 This repository contains all the necessary files and documentation to perform the Register Transfer Level (RTL) to GDSII (Graphic Database System II) physical design flow for a 1-bit full adder using the OpenLane automated digital design flow.
@@ -278,5 +277,3 @@ klayout designs/full_adder/runs/<YOUR_RUN_TIMESTAMP>/results/signoff/full_adder.
 
 Replace `<YOUR_RUN_TIMESTAMP>` with the actual timestamp of your run (e.g., `RUN_2025.07.17_11.24.00`).
 
-```
-```
