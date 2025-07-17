@@ -1,0 +1,79 @@
+OpenROAD b16bda7e82721d10566ff7e2b68f1ff0be9f9e38 
+Features included (+) or not (-): +Charts +GPU +GUI +Python
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+define_corners Typical
+read_liberty -corner Typical /home/harshith/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Using 1e-12 for capacitance...
+Using 1e+03 for resistance...
+Using 1e-09 for time...
+Using 1e+00 for voltage...
+Using 1e-03 for current...
+Using 1e-09 for power...
+Using 1e-06 for distance...
+[INFO]: Reading ODB at '/openlane/designs/full_adder/runs/RUN_2025.07.17_11.24.00/results/floorplan/full_adder.odb'…
+Reading design constraints file at '/openlane/designs/full_adder/src/full_adder.sdc'…
+[INFO]: Setting RC values...
+[INFO]: Setting signal min routing layer to: met1 and clock min routing layer to met3. 
+[INFO]: Setting signal max routing layer to: met5 and clock max routing layer to met5. 
+[INFO GPL-0002] DBU: 1000
+[INFO GPL-0003] SiteSize: (  0.460  2.720 ) um
+[INFO GPL-0004] CoreBBox: (  5.520 10.880 ) ( 21.160 24.480 ) um
+[INFO GPL-0006] NumInstances:                17
+[INFO GPL-0007] NumPlaceInstances:            4
+[INFO GPL-0008] NumFixedInstances:           13
+[INFO GPL-0009] NumDummyInstances:            0
+[INFO GPL-0010] NumNets:                      7
+[INFO GPL-0011] NumPins:                     19
+[INFO GPL-0012] DieBBox:  (  0.000  0.000 ) ( 26.860 37.580 ) um
+[INFO GPL-0013] CoreBBox: (  5.520 10.880 ) ( 21.160 24.480 ) um
+[INFO GPL-0016] CoreArea:               212.704 um^2
+[INFO GPL-0017] NonPlaceInstsArea:       41.290 um^2
+[INFO GPL-0018] PlaceInstsArea:          50.048 um^2
+[INFO GPL-0019] Util:                    29.197 %
+[INFO GPL-0020] StdInstsArea:            50.048 um^2
+[INFO GPL-0021] MacroInstsArea:           0.000 um^2
+[InitialPlace]  Iter: 1 CG residual: 0.00000002 HPWL: 177900
+[InitialPlace]  Iter: 2 CG residual: 0.00000002 HPWL: 149520
+[InitialPlace]  Iter: 3 CG residual: 0.00000000 HPWL: 148558
+[InitialPlace]  Iter: 4 CG residual: 0.00000000 HPWL: 147565
+[InitialPlace]  Iter: 5 CG residual: 0.00000000 HPWL: 146493
+[INFO GPL-0031] FillerInit:NumGCells:         4
+[INFO GPL-0032] FillerInit:NumGNets:          7
+[INFO GPL-0033] FillerInit:NumGPins:         19
+[INFO GPL-0023] TargetDensity:            0.300
+[INFO GPL-0024] AvrgPlaceInstArea:       12.512 um^2
+[INFO GPL-0025] IdealBinArea:            41.707 um^2
+[INFO GPL-0026] IdealBinCnt:                  5
+[INFO GPL-0027] TotalBinArea:           212.704 um^2
+[INFO GPL-0028] BinCnt:         2      2
+[INFO GPL-0029] BinSize: (  7.820  6.800 )
+[INFO GPL-0030] NumBins: 4
+[NesterovSolve] Iter:    1 overflow: 0.096 HPWL: 104188
+[INFO GPL-0100] worst slack 1e+30
+[WARNING GPL-0102] No slacks found. Timing-driven mode disabled.
+[NesterovSolve] Snapshot saved at iter = 0
+[INFO GPL-0075] Routability numCall: 1 inflationIterCnt: 1 bloatIterCnt: 0
+[INFO GPL-0036] TileBBox: (    0    0 ) ( 6900 6900 ) DBU
+[INFO GPL-0038] TileCnt:       3    5
+[INFO GPL-0039] numRoutingLayers: 6
+[INFO GPL-0040] NumTiles: 15
+[INFO GPL-0063] TotalRouteOverflowH2: 0
+[INFO GPL-0064] TotalRouteOverflowV2: 0
+[INFO GPL-0065] OverflowTileCnt2: 0
+[INFO GPL-0066] 0.5%RC: 0.6000
+[INFO GPL-0067] 1.0%RC: 0.6000
+[INFO GPL-0068] 2.0%RC: 0.6000
+[INFO GPL-0069] 5.0%RC: 0.5714
+[INFO GPL-0070] 0.5rcK: 1
+[INFO GPL-0071] 1.0rcK: 1
+[INFO GPL-0072] 2.0rcK: 0
+[INFO GPL-0073] 5.0rcK: 0
+[INFO GPL-0074] FinalRC: 0.6000
+[INFO GPL-0077] FinalRC lower than targetRC(1), routability not needed.
+[NesterovSolve] Finished with Overflow: 0.095930
+Setting global connections for newly added cells…
+Writing OpenROAD database to '/openlane/designs/full_adder/runs/RUN_2025.07.17_11.24.00/tmp/placement/8-global.odb'…
+Writing netlist to '/openlane/designs/full_adder/runs/RUN_2025.07.17_11.24.00/tmp/placement/8-global.nl.v'…
+Writing powered netlist to '/openlane/designs/full_adder/runs/RUN_2025.07.17_11.24.00/tmp/placement/8-global.pnl.v'…
+Writing layout to '/openlane/designs/full_adder/runs/RUN_2025.07.17_11.24.00/tmp/placement/8-global.def'…
